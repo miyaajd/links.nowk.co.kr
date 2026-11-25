@@ -366,6 +366,10 @@
 * { box-sizing: border-box; }
 .page-footer { margin-top: var(--footer-top-gap); text-align: center; color: var(--footer-color); }
 .page-footer small { font-size: var(--footer-font-size); }
+.page-footer span { display: inline-block; }
+.page-footer a { color: inherit; text-decoration: none; }
+.page-footer a:hover { text-decoration: underline; }
+.page-footer a:focus-visible { outline: var(--focus-outline); outline-offset: var(--focus-offset); }
 .shape-definitions { position: absolute; width: var(--reset-margin); height: var(--reset-margin); overflow: hidden; }
 .profile-image, .share-avatar { clip-path: var(--profile-image-clip); }
 body { margin: var(--reset-margin); background: var(--page-background); color: var(--page-color); font-family: var(--page-font); line-height: var(--page-line-height); }
