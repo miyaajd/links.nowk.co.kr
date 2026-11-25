@@ -142,6 +142,14 @@ export async function copyPageUrl(url, { navigator: nav, document: doc }) {
 export function setupInteractions(doc = document, win = window) {
   const shareUrl = getShareUrl(win.location.href);
   let pendingNavigation;
+  const resetLinkState = () => {
+    win.clearTimeout(pendingNavigation);
+    pendingNavigation = undefined;
+    for (const link of doc.querySelectorAll('.is-tapped')) {
+      link.classList.remove('is-tapped');
+      if (doc.activeElement === link) link.blur();
+    }
+  };
   for (const link of doc.querySelectorAll('.link-button')) {
     link.addEventListener('click', event => {
       if (!win.matchMedia('(hover: none)').matches || win.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -150,14 +158,17 @@ export function setupInteractions(doc = document, win = window) {
       if (pendingNavigation) return;
       link.classList.add('is-tapped');
       const delay = parseFloat(win.getComputedStyle(doc.documentElement).getPropertyValue('--link-tap-delay'));
-      pendingNavigation = win.setTimeout(() => win.location.assign(link.href), delay);
+      pendingNavigation = win.setTimeout(() => {
+        // 앱·새 창으로 전달되어 원래 페이지가 남아도 잠금이 유지되지 않게 합니다.
+        resetLinkState();
+        win.location.assign(link.href);
+      }, delay);
     });
   }
-  win.addEventListener('pageshow', () => {
-    win.clearTimeout(pendingNavigation);
-    pendingNavigation = undefined;
-    for (const link of doc.querySelectorAll('.is-tapped')) link.classList.remove('is-tapped');
-  });
+  win.addEventListener('pageshow', resetLinkState);
+  win.addEventListener('pagehide', resetLinkState);
+  win.addEventListener('focus', resetLinkState);
+  doc.addEventListener('visibilitychange', resetLinkState);
   let qr;
   const download = (href, extension) => {
     const link = doc.createElement('a');
