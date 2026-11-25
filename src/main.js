@@ -8,6 +8,13 @@ export function usableHref(value) {
   } catch { return ''; }
 }
 
+export function getShareUrl(href) {
+  const url = new URL(href);
+  url.search = '';
+  url.hash = '';
+  return url.href;
+}
+
 export function renderPage(config, doc = document) {
   const signup = doc.getElementById('signup');
   const signupHref = usableHref(config.signup.href);
@@ -133,6 +140,7 @@ export async function copyPageUrl(url, { navigator: nav, document: doc }) {
 }
 
 export function setupInteractions(doc = document, win = window) {
+  const shareUrl = getShareUrl(win.location.href);
   let pendingNavigation;
   for (const link of doc.querySelectorAll('.link-button')) {
     link.addEventListener('click', event => {
@@ -162,18 +170,19 @@ export function setupInteractions(doc = document, win = window) {
     const trigger = doc.getElementById(`${kind}-open`);
     trigger.addEventListener('click', () => {
       if (kind === 'share') {
-        doc.getElementById('share-url').value = win.location.href;
-        doc.getElementById('share-address').textContent = win.location.href.replace(/^https?:\/\//, '').replace(/\/$/, '');
+        doc.getElementById('share-url').value = shareUrl;
+        doc.getElementById('share-address').textContent = shareUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
         doc.getElementById('share-status').textContent = '';
         if (typeof win.qrcode === 'function') {
         qr = win.qrcode(0, 'M');
-        qr.addData(win.location.href);
+        qr.addData(shareUrl);
         qr.make();
         doc.getElementById('share-qr').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 16, scalable: true });
         }
         doc.querySelector('.qr-section').hidden = !qr;
       }
       dialog.showModal();
+      doc.getElementById(`${kind}-title`).focus({ preventScroll: true });
       doc.body.classList.add('modal-open');
     });
     dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
@@ -207,11 +216,11 @@ export function setupInteractions(doc = document, win = window) {
   });
   nativeButton.hidden = !win.navigator.share;
   nativeButton.addEventListener('click', async () => {
-    try { await win.navigator.share({ title: linkPage.profile.name, url: win.location.href }); }
+    try { await win.navigator.share({ title: linkPage.profile.name, url: shareUrl }); }
     catch (error) { if (error.name !== 'AbortError') doc.getElementById('share-status').textContent = '공유할 수 없어요. 아래 링크 복사를 이용해 주세요.'; }
   });
   doc.getElementById('copy-link').addEventListener('click', async () => {
-    const copied = await copyPageUrl(win.location.href, { navigator: win.navigator, document: doc });
+    const copied = await copyPageUrl(shareUrl, { navigator: win.navigator, document: doc });
     doc.getElementById('share-status').textContent = copied ? '링크를 복사했어요.' : '주소를 길게 눌러 직접 복사해 주세요.';
   });
 }

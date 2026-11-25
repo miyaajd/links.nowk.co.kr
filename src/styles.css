@@ -469,6 +469,7 @@ button { cursor: pointer; }
 .copy-row button { flex-shrink: 0; border: var(--button-border); padding: var(--modal-input-padding); background: var(--modal-background); color: var(--modal-color); font-size: var(--modal-font-size); }
 .modal-status { min-height: var(--modal-status-height); margin-bottom: var(--reset-margin); color: var(--modal-muted-color); }
 .modal :focus-visible { outline: var(--modal-focus-outline); outline-offset: var(--focus-offset); }
+.modal h2:focus { outline: var(--button-border); }
 .copy-row :focus-visible { outline-offset: var(--reset-margin); }
 .qr-section { display: flex; flex-direction: column; align-items: center; gap: var(--modal-gap); margin-top: var(--modal-gap); }
 #share-qr { width: var(--qr-size); height: var(--qr-size); }
@@ -491,7 +492,7 @@ button { cursor: pointer; }
 .share-hero .share-profile { margin: var(--reset-margin); }
 .share-avatar { width: var(--share-avatar-size); height: var(--share-avatar-size); overflow: hidden; }
 .share-avatar img { width: 100%; height: 100%; object-fit: cover; transform: var(--profile-image-scale); }
-.share-address { margin: var(--reset-margin); max-width: 100%; overflow-wrap: anywhere; text-align: center; font-size: var(--share-address-size); font-weight: var(--share-address-weight); }
+.share-address { margin: var(--reset-margin); max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; font-size: var(--share-address-size); font-weight: var(--share-address-weight); }
 .share-copy { display: inline-flex; align-items: center; gap: var(--profile-action-gap); border: var(--button-border); border-radius: var(--signup-radius); padding: var(--share-copy-padding); background: var(--modal-background); color: var(--modal-color); font-size: var(--share-small-font); box-shadow: var(--share-copy-shadow); }
 .share-close { position: absolute; top: var(--share-close-offset); right: var(--share-close-offset); color: var(--modal-color); }
 #signup-dialog .modal-close { position: absolute; top: var(--share-close-offset); right: var(--share-close-offset); }
