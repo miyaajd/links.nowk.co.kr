@@ -1,0 +1,530 @@
+@font-face {
+  font-family: 'SUIT Variable';
+  src: url('/public/fonts/SUIT-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* 페이지 하단 저작권 문구 글자 크기 */
+  --footer-font-size: 11px;
+  /* 페이지 하단 저작권 문구 색상 */
+  --footer-color: #999999;
+  /* 페이지 하단 저작권 문구 위쪽 간격 */
+  --footer-top-gap: 40px;
+  /* 페이지 전체 배경색 */
+  --page-background: #000000;
+  /* 페이지 전체 기본 글자색 */
+  --page-color: #ffffff;
+  /* 페이지 전체 글꼴 */
+  --page-font: 'SUIT Variable', SUIT, sans-serif;
+  /* 페이지 전체 기본 줄 높이 */
+  --page-line-height: 1.5;
+  /* 페이지 전체 최소 높이 */
+  --page-min-height: 100svh;
+  /* 가입 버튼과 본문을 포함하는 페이지 전체 최대 너비 */
+  --page-width: 580px;
+  /* 페이지 좌우 여백 */
+  --page-padding-x: clamp(20px, 5vw, 28px);
+  /* 페이지 상하 여백 */
+  --page-padding-y: clamp(20px, 5vw, 32px);
+  /* 페이지와 제목 기본 바깥 여백 초기값 */
+  --reset-margin: 0;
+  /* 상단 가입 영역 최소 높이 */
+  --topbar-height: 44px;
+  /* 상단 가입 영역과 프로필 사이 간격 */
+  --profile-top-gap: clamp(8px, 2vw, 12px);
+  /* 프로필과 링크 목록 사이 간격 */
+  --profile-bottom-gap: clamp(28px, 7vw, 40px);
+  /* 프로필 내부 요소 사이 간격 */
+  --profile-gap: 20px;
+  /* 프로필 이미지 가로·세로 크기 */
+  --profile-image-size: clamp(80px, 20vw, 100px);
+  /* 메인 프로필과 공유 모달 프로필 이미지의 표시 배율 */
+  --profile-image-scale: scale(1.2);
+  /* 프로필 이미지 배경색 */
+  --profile-image-background: #ffffff;
+  /* 프로필 이미지 대체 로고 글자색 */
+  --profile-image-color: #000000;
+  /* 메인 프로필과 공유 모달 프로필의 둥근 사각형 곡선 */
+  --profile-image-clip: url('#profile-squircle');
+  /* 프로필 이미지 모서리 기본값: 실제 곡선은 클리핑 경로에서 적용 */
+  --profile-image-radius: 0;
+  /* 프로필 대체 로고 글꼴 */
+  --profile-logo-font: var(--page-font);
+  /* 프로필 대체 로고 글자 크기 */
+  --profile-logo-size: 30px;
+  /* 프로필 대체 로고 자간 */
+  --profile-logo-spacing: -2px;
+  /* 프로필 이름 글자 크기 */
+  --profile-name-size: 22px;
+  /* 프로필 이름 글자 굵기 */
+  --profile-name-weight: 700;
+  /* 프로필 이름 자간 */
+  --profile-name-spacing: -1px;
+  /* 프로필 소개 글자 크기 */
+  --profile-bio-size: 14px;
+  /* 프로필 소개 글자색 */
+  --profile-bio-color: #e5e5e5;
+  /* 가입 버튼과 링크 버튼 글꼴 크기 */
+  --button-font-size: 15px;
+  /* 가입 버튼과 링크 버튼 글꼴 굵기 */
+  --button-font-weight: 500;
+  /* 가입 버튼 최소 높이 */
+  --signup-height: 44px;
+  /* 가입 버튼 안쪽 여백 */
+  --signup-padding: 10px 18px;
+  /* 가입 버튼 모서리 */
+  --signup-radius: 999px;
+  /* 가입 버튼 배경색 */
+  --signup-background: #ffffff;
+  /* 가입 버튼 글자색 */
+  --signup-color: #000000;
+  /* 비활성 가입 버튼 배경색 */
+  --signup-disabled-background: #292929;
+  /* 비활성 가입 버튼 글자색 */
+  --signup-disabled-color: #a3a3a3;
+  /* 가입 버튼 호버 배경색 */
+  --signup-hover-background: #e5e5e5;
+  /* 가입 버튼과 링크 버튼 테두리 초기값 */
+  --button-border: none;
+  /* 링크 목록 버튼 사이 간격 */
+  --link-list-gap: 16px;
+  /* 링크 버튼 최소 높이 */
+  --link-height: 64px;
+  /* 링크 버튼 안쪽 여백 */
+  --link-padding: 18px 24px;
+  /* 링크 버튼 모서리 */
+  --link-radius: 10px;
+  /* 링크 버튼 배경색 */
+  --link-background: #ffffff;
+  /* 링크 버튼 글자색 */
+  --link-color: #000000;
+  /* 링크 버튼 호버 배경색 */
+  --link-hover-background: #000000;
+  /* 링크 버튼의 부드러운 그림자 */
+  --link-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+  /* 링크 호버·키보드 포커스의 글자색 */
+  --link-hover-color: #ffffff;
+  /* 링크 버튼 호버 확대 비율 */
+  --link-hover-scale: scale(1.04);
+  /* 링크 버튼 기본 확대 비율 */
+  --link-default-scale: scale(1);
+  /* 링크 버튼 원형 채움의 시작 위치와 크기 */
+  --link-fill-start: translate(-50%, -50%) scale(0);
+  /* 링크 버튼 원형 채움의 완료 위치와 크기 */
+  --link-fill-end: translate(-50%, -50%) scale(1.2);
+  /* 링크 버튼 확대·원형 채움 전환 */
+  --link-motion: 400ms cubic-bezier(.1, 0, .3, 1);
+  /* 링크 버튼 썸네일 크기 */
+  --link-thumbnail-size: 64px;
+  /* 링크 버튼 썸네일 모서리 */
+  --link-thumbnail-radius: 10px;
+  /* 썸네일 링크 버튼 내부 여백 */
+  --link-thumbnail-padding: 10px;
+  /* 링크 카드 이미지 가로세로 비율 */
+  --link-card-ratio: 16 / 9;
+  /* 이미지 미등록 대형 링크 카드의 이미지 영역 배경 */
+  --link-card-placeholder-background: #171717;
+  /* 링크 보조 문구와 제목 사이 간격 */
+  --link-caption-gap: 8px;
+  /* 이미지 카드 타이틀 글자 굵기 */
+  --link-card-title-weight: 700;
+  /* 이미지 카드 서브 타이틀 글자 굵기 */
+  --link-card-caption-weight: 400;
+  /* 움직임 최소화 설정의 링크 전환 */
+  --link-reduced-motion: 0s;
+  /* 가입 버튼과 링크 버튼 포커스 외곽선 */
+  --focus-outline: 2px solid #ffffff;
+  /* 가입 버튼과 링크 버튼 포커스 외곽선 간격 */
+  --focus-offset: 4px;
+  /* 가입 버튼과 링크 버튼 색상 전환 */
+  --button-transition: background-color 160ms ease;
+  /* 상단 버튼과 소셜 아이콘의 터치 영역 */
+  --icon-touch-size: 44px;
+  /* 상단 버튼과 소셜 아이콘의 그림 크기 */
+  --icon-size: 24px;
+  /* 상단 버튼의 배경색 */
+  --topbar-button-background: #ffffff;
+  /* 상단 버튼의 아이콘 색 */
+  --topbar-button-color: #000000;
+  /* 상단 버튼 모서리 */
+  --topbar-button-radius: 50%;
+  /* 아이콘 버튼과 협업 버튼의 투명 배경 */
+  --transparent-background: transparent;
+  /* 프로필 액션 버튼 사이 간격 */
+  --profile-action-gap: 8px;
+  /* 협업 제안 버튼 테두리 */
+  --collaboration-border: 1px solid #ffffff;
+  /* 협업 제안 버튼 안쪽 여백 */
+  --collaboration-padding: 4px 16px;
+  /* 협업 제안 버튼 최소 높이 */
+  --collaboration-height: 38px;
+  /* 협업 제안 버튼 모서리 */
+  --collaboration-radius: 24px;
+  /* 협업 제안 버튼 글자 크기 */
+  --collaboration-font-size: 14px;
+  /* 협업 제안 버튼 글자 굵기 */
+  --collaboration-font-weight: 500;
+  /* 협업 제안 버튼의 메일 아이콘 크기 */
+  --collaboration-icon-size: 16px;
+  /* 협업 제안 버튼의 메일 아이콘과 텍스트 간격 */
+  --collaboration-icon-gap: 6px;
+  /* 프로필 옆 공식 스토어 아이콘 SVG */
+  --store-icon: url('/public/icons/shop-icon.svg');
+  /* 프로필 옆 인스타그램·메일 버튼 가로·세로 크기 */
+  --social-button-size: 38px;
+  /* 프로필 옆 인스타그램·메일 아이콘 크기 */
+  --social-icon-size: 30px;
+  /* 모달 최대 너비 */
+  --modal-width: 420px;
+  /* 모달의 화면 가장자리 최소 여백 */
+  --modal-edge-space: 32px;
+  /* 모달 안쪽 여백 */
+  --modal-padding: 24px;
+  /* 모달 배경색 */
+  --modal-background: #ffffff;
+  /* 모달 기본 글자색 */
+  --modal-color: #171717;
+  /* 모달 설명과 상태 안내 글자색 */
+  --modal-muted-color: #666666;
+  /* 모달 모서리 */
+  --modal-radius: 20px;
+  /* 모달 뒤 배경색 */
+  --modal-backdrop: rgb(0 0 0 / 65%);
+  /* 모달 제목 글자 크기 */
+  --modal-title-size: 20px;
+  /* 모달 본문과 입력 글자 크기 */
+  --modal-font-size: 14px;
+  /* 모달 내부 요소 간격 */
+  --modal-gap: 20px;
+  /* 모달 공유 프로필과 악수 아이콘 크기 */
+  --modal-emblem-size: 64px;
+  /* 모달 공유 프로필 배경색 */
+  --modal-avatar-background: #f2f2f2;
+  /* 모달 액션 및 가입 버튼 배경색 */
+  --modal-action-background: #111111;
+  /* 모달 액션 및 가입 버튼 글자색 */
+  --modal-action-color: #ffffff;
+  /* 모달 입력칸 테두리 */
+  --modal-input-border: 1px solid #dedede;
+  /* 모달 입력칸과 액션 버튼 모서리 */
+  --modal-input-radius: 10px;
+  /* 모달 입력칸 안쪽 여백 */
+  --modal-input-padding: 12px;
+  /* 모달 내부 키보드 포커스 외곽선 */
+  --modal-focus-outline: 2px solid #111111;
+  /* 모달 상태 안내 최소 높이 */
+  --modal-status-height: 21px;
+  /* 공유 버튼 SVG */
+  --share-icon: url('/public/icons/share.svg');
+  /* 하트 악수 버튼 SVG */
+  --heart-icon: url('/public/icons/nowk-heart-handshake.svg');
+  /* 우측 상단 가입 안내 버튼의 사용자 제공 SVG */
+  --signup-trigger-icon: url('/public/icons/nowk-heart-handshake.svg');
+  /* 우측 상단 가입 안내 버튼의 SVG 가로·세로 크기 */
+  --signup-trigger-icon-size: 30px;
+  /* 인스타그램 버튼 SVG */
+  --instagram-icon: url('/public/icons/instagram.svg');
+  /* 메일 버튼 SVG */
+  --mail-icon: url('/public/icons/mail.svg');
+  /* 모달 닫기 버튼 SVG */
+  --close-icon: url('/public/icons/x.svg');
+  /* 협업 제안 버튼 배경색 */
+  --collaboration-background: #ffffff;
+  /* 협업 제안 버튼 글자색 */
+  --collaboration-color: #000000;
+  /* 공유 QR 코드 가로·세로 크기 */
+  --qr-size: 120px;
+  /* QR 저장 버튼 사이 간격 */
+  --qr-download-gap: 16px;
+  /* QR 저장 버튼 안쪽 여백 */
+  --qr-download-padding: 8px 14px;
+  /* 상단 버튼의 반응형 가로·세로 크기 */
+  --topbar-button-size: clamp(34px, 8vw, 44px);
+  /* 상단 공유 아이콘의 반응형 크기 */
+  --topbar-icon-size: clamp(15px, 3.8vw, 20px);
+  /* 상단 악수 아이콘의 반응형 크기 */
+  --topbar-heart-size: clamp(20px, 5vw, 25px);
+  /* 상단·협업 제안 버튼의 반투명 유리 배경 */
+  --glass-background: linear-gradient(145deg, rgb(255 255 255 / 88%), rgb(255 255 255 / 68%));
+  /* 상단·협업 제안 글래스 버튼의 텍스트와 아이콘 색상 */
+  --glass-content-color: #000000;
+  /* 상단·협업 제안 버튼의 유리 테두리 */
+  --glass-border: 1px solid rgb(255 255 255 / 28%);
+  /* 상단·협업 제안 버튼의 유리 하이라이트와 그림자 */
+  --glass-shadow: inset 0 1px 0 rgb(255 255 255 / 24%), 0 4px 16px rgb(0 0 0 / 18%);
+  /* 상단·협업 제안 버튼과 모달의 유리 배경 흐림 효과 */
+  --glass-filter: blur(20px) saturate(160%);
+  /* 모달의 반투명 밝은 유리 배경 */
+  --modal-glass-background: linear-gradient(145deg, rgb(255 255 255 / 95%), rgb(245 245 248 / 88%));
+  /* 모달 유리 테두리 */
+  --modal-glass-border: 1px solid rgb(255 255 255 / 70%);
+  /* 모달의 유리 하이라이트와 그림자 */
+  --modal-glass-shadow: inset 0 1px 0 rgb(255 255 255 / 85%), 0 24px 80px rgb(0 0 0 / 28%);
+  /* 공유 모달 최대 너비 */
+  --share-width: 346px;
+  /* 공유 모달 상단 프로필 영역 높이 */
+  --share-hero-height: 228px;
+  /* 공유 모달 상단 안쪽 여백 */
+  --share-hero-padding: 30px 20px 24px;
+  /* 공유 모달 상단 프로필 이미지 크기 */
+  --share-avatar-size: 90px;
+  /* 공유 모달 상단 프로필과 주소·복사 버튼 사이 간격 */
+  --share-content-gap: 14px;
+  /* 공유 모달 상단 배경색 */
+  --share-hero-background: #b9b9b9;
+  /* 공유 모달 상단 이미지 흐림 효과 */
+  --share-image-filter: blur(28px);
+  /* 공유 모달 상단 배경 이미지 확대 비율 */
+  --share-image-scale: scale(1.45);
+  /* 공유 모달 상단 이미지 위 반투명 유리 덮개 */
+  --share-hero-glass: rgb(255 255 255 / 18%);
+  /* 공유 모달 주소 글자 크기 */
+  --share-address-size: 16px;
+  /* 공유 모달 주소 글자 굵기 */
+  --share-address-weight: 400;
+  /* 공유 모달 복사 버튼 SVG */
+  --copy-icon: url('/public/icons/copy.svg');
+  /* 공유 모달 복사 아이콘 크기 */
+  --copy-icon-size: 12px;
+  /* 공유 모달 복사 버튼 안쪽 여백 */
+  --share-copy-padding: 7px 12px;
+  /* 공유 모달 복사·저장 버튼 글자 크기 */
+  --share-small-font: 12px;
+  /* 공유 모달 복사 버튼 그림자 */
+  --share-copy-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+  /* 공유 모달 하단 안쪽 여백 */
+  --share-bottom-padding: 30px 20px;
+  /* 공유 모달 QR 테두리 영역 크기 */
+  --share-qr-size: 108px;
+  /* 공유 모달 QR 테두리 */
+  --share-qr-border: 1px solid #e4e9ef;
+  /* 공유 모달 QR 모서리 */
+  --share-qr-radius: 12px;
+  /* 공유 모달 QR와 저장 버튼 간격 */
+  --share-qr-gap: 18px;
+  /* 공유 모달 저장 버튼 안쪽 여백 */
+  --share-download-padding: 7px 14px;
+  /* 공유 모달 다른 앱 공유 버튼 위 여백 */
+  --share-native-margin: 18px;
+  /* 공유 모달 닫기 버튼 위치 */
+  --share-close-offset: 6px;
+  /* 접근성 안내의 화면상 크기 */
+  --sr-size: 1px;
+  /* 접근성 안내의 화면상 오프셋 */
+  --sr-offset: -1px;
+  /* 접근성 안내의 잘라내기 영역 */
+  --sr-clip: inset(50%);
+  /* 가입 모달 혜택 목록 위아래 여백 */
+  --benefits-margin: 24px 0 28px;
+  /* 가입 모달 혜택 행 사이 간격 */
+  --benefits-gap: 18px;
+  /* 가입 모달 혜택 아이콘 가로·세로 크기 */
+  --benefit-icon-size: 26px;
+  /* 가입 모달 혜택 아이콘과 문구 사이 간격 */
+  --benefit-content-gap: 12px;
+  /* 가입 모달 혜택 문구 반응형 글자 크기 */
+  --benefit-font-size: clamp(11px, 3.15vw, 14px);
+  /* 가입 모달 혜택 문구 글자 굵기 */
+  --benefit-font-weight: 500;
+  /* 가입 모달 제목과 부제 사이 간격 */
+  --signup-subtitle-top-gap: 8px;
+  /* 가입 모달 부제와 혜택 목록 사이의 얇은 구분선 */
+  --signup-benefits-border: 1px solid rgb(0 0 0 / 10%);
+  /* 가입 모달 구분선과 첫 혜택 사이 간격 */
+  --signup-benefits-top-padding: 20px;
+  /* 아카이브 섹션 상단의 얇은 구분선 */
+  --archive-border: 1px solid rgb(255 255 255 / 22%);
+  /* 기존 링크 목록과 아카이브 구분선 사이 간격 */
+  --archive-top-margin: 32px;
+  /* 아카이브 구분선과 제목 사이 간격 */
+  --archive-top-padding: 28px;
+  /* 아카이브 제목과 카드 사이 간격 */
+  --archive-title-gap: 20px;
+  /* 아카이브 제목 글자 크기 */
+  --archive-title-size: 16px;
+  /* 아카이브 제목 글자 굵기 */
+  --archive-title-weight: 800;
+  /* 580px 초과 화면의 페이지 바깥 배경색 */
+  --desktop-background: #191919;
+  /* 580px 초과 화면의 중앙 카드 바깥 상하 여백 */
+  --desktop-card-margin: 40px;
+  /* 580px 초과 화면의 중앙 카드와 화면 좌우 사이 최소 여백 합계 */
+  --desktop-card-edge-space: 32px;
+  /* 580px 초과 화면의 중앙 카드 모서리 */
+  --desktop-card-radius: 24px;
+  /* 580px 초과 화면의 중앙 카드 그림자 */
+  --desktop-card-shadow: 0 12px 48px rgb(0 0 0 / 14%);
+  /* 580px 초과 화면의 상단 버튼과 프로필 사이 여백 */
+  --desktop-profile-top-gap: 48px;
+}
+
+* { box-sizing: border-box; }
+.page-footer { margin-top: var(--footer-top-gap); text-align: center; color: var(--footer-color); }
+.page-footer small { font-size: var(--footer-font-size); }
+.shape-definitions { position: absolute; width: var(--reset-margin); height: var(--reset-margin); overflow: hidden; }
+.profile-image, .share-avatar { clip-path: var(--profile-image-clip); }
+body { margin: var(--reset-margin); background: var(--page-background); color: var(--page-color); font-family: var(--page-font); line-height: var(--page-line-height); }
+.page { width: 100%; max-width: var(--page-width); min-height: var(--page-min-height); margin-inline: auto; padding: var(--page-padding-y) var(--page-padding-x); }
+.topbar { display: flex; justify-content: space-between; min-height: var(--topbar-height); }
+main { width: 100%; min-width: var(--reset-margin); }
+#signup { min-width: var(--reset-margin); max-width: 100%; }
+.profile { display: flex; flex-direction: column; align-items: center; gap: var(--profile-gap); padding-block: var(--profile-top-gap) var(--profile-bottom-gap); text-align: center; }
+.profile-image { display: grid; place-items: center; position: relative; flex-shrink: 0; width: var(--profile-image-size); height: var(--profile-image-size); overflow: hidden; border-radius: var(--profile-image-radius); background: var(--profile-image-background); color: var(--profile-image-color); font-family: var(--profile-logo-font); font-size: var(--profile-logo-size); letter-spacing: var(--profile-logo-spacing); }
+.profile-image img { position: absolute; width: 100%; height: 100%; object-fit: cover; transform: var(--profile-image-scale); }
+h1 { margin: var(--reset-margin); font-size: var(--profile-name-size); font-weight: var(--profile-name-weight); letter-spacing: var(--profile-name-spacing); }
+#profile-bio { margin: var(--reset-margin); font-size: var(--profile-bio-size); color: var(--profile-bio-color); white-space: pre-line; overflow-wrap: anywhere; }
+#links { display: grid; gap: var(--link-list-gap); }
+#archive-links { display: grid; gap: var(--link-list-gap); }
+.archive-section { margin-top: var(--archive-top-margin); padding-top: var(--archive-top-padding); border-top: var(--archive-border); }
+#archive-title { margin: var(--reset-margin); margin-bottom: var(--archive-title-gap); font-size: var(--archive-title-size); font-weight: var(--archive-title-weight); text-align: center; }
+.signup-button, .link-button { display: flex; align-items: center; justify-content: center; border: var(--button-border); font-family: inherit; font-size: var(--button-font-size); font-weight: var(--button-font-weight); line-height: inherit; text-decoration: none; text-align: center; overflow-wrap: anywhere; transition: var(--button-transition); }
+.signup-button { max-width: 100%; min-height: var(--signup-height); padding: var(--signup-padding); border-radius: var(--signup-radius); background: var(--signup-background); color: var(--signup-color); }
+.signup-button:hover { background: var(--signup-hover-background); }
+.signup-button:disabled { background: var(--signup-disabled-background); color: var(--signup-disabled-color); cursor: not-allowed; }
+.link-button { min-width: var(--reset-margin); min-height: var(--link-height); padding: var(--link-padding); border-radius: var(--link-radius); background: var(--link-background); color: var(--link-color); box-shadow: var(--link-shadow); }
+.link-button { position: relative; isolation: isolate; overflow: hidden; transform: var(--link-default-scale); transition: transform var(--link-motion), color var(--link-motion); }
+.link-button::before { content: ''; position: absolute; left: 50%; top: 50%; width: 100%; aspect-ratio: 1; border-radius: var(--topbar-button-radius); background: var(--link-hover-background); transform: var(--link-fill-start); transition: transform var(--link-motion); z-index: -1; }
+.link-content { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--link-caption-gap); width: 100%; min-width: var(--reset-margin); }
+.link-thumbnail { display: grid; grid-template-columns: var(--link-thumbnail-size) minmax(0, 1fr); gap: var(--link-thumbnail-padding); padding: var(--link-thumbnail-padding); }
+.link-thumbnail img { width: var(--link-thumbnail-size); height: var(--link-thumbnail-size); border-radius: var(--link-thumbnail-radius); object-fit: cover; }
+.link-card { display: flex; flex-direction: column; padding: var(--reset-margin); }
+.link-card > img { display: block; width: 100%; aspect-ratio: var(--link-card-ratio); object-fit: cover; }
+.link-card-placeholder { display: block; width: 100%; aspect-ratio: var(--link-card-ratio); background: var(--link-card-placeholder-background); }
+.link-card .link-content { padding: var(--link-padding); }
+.link-card::before { content: none; }
+.link-card .link-content { position: relative; isolation: isolate; overflow: hidden; }
+.link-card .link-content::before { content: ''; position: absolute; left: 50%; top: 50%; width: 100%; aspect-ratio: 1; border-radius: var(--topbar-button-radius); background: var(--link-hover-background); transform: var(--link-fill-start); transition: transform var(--link-motion); z-index: -1; }
+.link-card:focus-visible .link-content::before { transform: var(--link-fill-end); }
+@media (hover: hover) and (pointer: fine) {
+  .link-card:hover .link-content::before { transform: var(--link-fill-end); }
+}
+.link-caption { font-weight: var(--profile-name-weight); }
+.link-card .link-label { font-weight: var(--link-card-title-weight); }
+.link-card .link-caption { font-weight: var(--link-card-caption-weight); }
+.link-button:focus-visible { color: var(--link-hover-color); }
+.link-button:focus-visible::before { transform: var(--link-fill-end); }
+@media (hover: hover) and (pointer: fine) {
+  .link-button:hover { color: var(--link-hover-color); transform: var(--link-hover-scale); }
+  .link-button:hover::before { transform: var(--link-fill-end); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    /* 움직임 최소화 시 링크 버튼 원형 채움·확대 전환 시간 */
+    --link-motion: var(--link-reduced-motion);
+    /* 움직임 최소화 시 링크 버튼 호버 확대 비율 */
+    --link-hover-scale: var(--link-default-scale);
+  }
+}
+.signup-button:focus-visible, .link-button:focus-visible { outline: var(--focus-outline); outline-offset: var(--focus-offset); }
+
+[hidden] { display: none !important; }
+button, input { font-family: inherit; }
+button { cursor: pointer; }
+.icon-button { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: var(--icon-touch-size); height: var(--icon-touch-size); padding: var(--reset-margin); border: var(--button-border); background: var(--transparent-background); color: inherit; text-decoration: none; }
+[data-icon]::before { content: ''; display: block; width: var(--icon-size); height: var(--icon-size); background: currentColor; mask-size: contain; mask-repeat: no-repeat; mask-position: center; }
+[data-icon='share']::before { mask-image: var(--share-icon); }
+[data-icon='heart-handshake']::before { mask-image: var(--heart-icon); }
+#signup-open::before { mask-image: var(--signup-trigger-icon); width: var(--signup-trigger-icon-size); height: var(--signup-trigger-icon-size); }
+[data-icon='instagram']::before { mask-image: var(--instagram-icon); }
+[data-icon='mail']::before { mask-image: var(--mail-icon); }
+[data-icon='store']::before { mask-image: var(--store-icon); }
+.collaboration-button { gap: var(--collaboration-icon-gap); }
+.collaboration-button [data-icon]::before { width: var(--collaboration-icon-size); height: var(--collaboration-icon-size); }
+[data-icon='x']::before { mask-image: var(--close-icon); }
+[data-icon='copy']::before { mask-image: var(--copy-icon); width: var(--copy-icon-size); height: var(--copy-icon-size); }
+.topbar-button { border-radius: var(--topbar-button-radius); background: var(--topbar-button-background); color: var(--topbar-button-color); }
+.profile-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--profile-action-gap); }
+.collaboration-button { display: inline-flex; align-items: center; justify-content: center; min-height: var(--collaboration-height); padding: var(--collaboration-padding); border: var(--collaboration-border); border-radius: var(--collaboration-radius); color: var(--collaboration-color); background: var(--collaboration-background); font-size: var(--collaboration-font-size); text-decoration: none; }
+.social-button { width: var(--social-button-size); height: var(--social-button-size); color: var(--page-color); }
+.social-button::before { width: var(--social-icon-size); height: var(--social-icon-size); }
+.icon-button:focus-visible, .collaboration-button:focus-visible { outline: var(--focus-outline); outline-offset: var(--focus-offset); }
+.modal-open { overflow: hidden; }
+.modal { width: min(var(--modal-width), calc(100% - var(--modal-edge-space))); max-height: calc(100svh - var(--modal-edge-space)); overflow-y: auto; border: var(--button-border); border-radius: var(--modal-radius); padding: var(--modal-padding); background: var(--modal-background); color: var(--modal-color); font-size: var(--modal-font-size); }
+.modal::backdrop { background: var(--modal-backdrop); }
+.modal-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--profile-action-gap); }
+.modal h2 { margin: var(--reset-margin); font-size: var(--modal-title-size); }
+.modal-close { color: var(--modal-color); }
+.modal-emblem { display: grid; place-items: center; margin: var(--modal-gap) auto; }
+.modal-emblem::before { width: var(--modal-emblem-size); height: var(--modal-emblem-size); }
+#signup-dialog { text-align: center; }
+.modal-description { margin-block: var(--modal-gap); white-space: pre-line; color: var(--modal-muted-color); overflow-wrap: anywhere; }
+.modal .signup-button { width: 100%; background: var(--modal-action-background); color: var(--modal-action-color); }
+.modal .signup-button:disabled { background: var(--signup-disabled-background); color: var(--signup-disabled-color); }
+.share-profile { display: flex; flex-direction: column; align-items: center; margin-block: var(--modal-gap); }
+.share-avatar { display: grid; place-items: center; width: var(--modal-emblem-size); height: var(--modal-emblem-size); border-radius: var(--profile-image-radius); background: var(--modal-avatar-background); font-family: var(--profile-logo-font); font-size: var(--profile-logo-size); }
+.modal-action { display: block; width: 100%; min-height: var(--icon-touch-size); border: var(--button-border); border-radius: var(--modal-input-radius); background: var(--modal-action-background); color: var(--modal-action-color); font-size: var(--modal-font-size); margin-bottom: var(--modal-gap); }
+.copy-row { display: flex; border: var(--modal-input-border); border-radius: var(--modal-input-radius); overflow: hidden; }
+.copy-row input { width: 100%; min-width: var(--reset-margin); border: var(--button-border); padding: var(--modal-input-padding); font-size: var(--modal-font-size); background: var(--modal-background); color: var(--modal-muted-color); }
+.copy-row button { flex-shrink: 0; border: var(--button-border); padding: var(--modal-input-padding); background: var(--modal-background); color: var(--modal-color); font-size: var(--modal-font-size); }
+.modal-status { min-height: var(--modal-status-height); margin-bottom: var(--reset-margin); color: var(--modal-muted-color); }
+.modal :focus-visible { outline: var(--modal-focus-outline); outline-offset: var(--focus-offset); }
+.copy-row :focus-visible { outline-offset: var(--reset-margin); }
+.qr-section { display: flex; flex-direction: column; align-items: center; gap: var(--modal-gap); margin-top: var(--modal-gap); }
+#share-qr { width: var(--qr-size); height: var(--qr-size); }
+#share-qr svg { display: block; width: 100%; height: 100%; }
+.qr-downloads { display: flex; gap: var(--qr-download-gap); }
+.qr-downloads button { border: var(--modal-input-border); border-radius: var(--signup-radius); padding: var(--qr-download-padding); background: var(--modal-background); color: var(--modal-color); }
+
+.topbar-button { width: var(--topbar-button-size); height: var(--topbar-button-size); }
+.topbar-button::before { width: var(--topbar-icon-size); height: var(--topbar-icon-size); }
+#signup-open::before { width: var(--topbar-heart-size); height: var(--topbar-heart-size); }
+.topbar-button { background: var(--topbar-button-background); border: var(--button-border); color: var(--topbar-button-color); }
+.collaboration-button { background: var(--collaboration-background); border: var(--collaboration-border); color: var(--collaboration-color); font-weight: var(--collaboration-font-weight); }
+.modal { background: var(--modal-glass-background); border: var(--modal-glass-border); box-shadow: var(--modal-glass-shadow); -webkit-backdrop-filter: var(--glass-filter); backdrop-filter: var(--glass-filter); }
+
+.visually-hidden { position: absolute; width: var(--sr-size); height: var(--sr-size); padding: var(--reset-margin); margin: var(--sr-offset); overflow: hidden; clip-path: var(--sr-clip); white-space: nowrap; border: var(--button-border); }
+#share-dialog { width: min(var(--share-width), calc(100% - var(--modal-edge-space))); padding: var(--reset-margin); border: var(--button-border); background: var(--modal-background); }
+.share-hero { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; min-height: var(--share-hero-height); padding: var(--share-hero-padding); overflow: hidden; background: var(--share-hero-background); color: var(--page-color); gap: var(--share-content-gap); }
+.share-background { position: absolute; inset: var(--reset-margin); width: 100%; height: 100%; object-fit: cover; filter: var(--share-image-filter); transform: var(--share-image-scale); z-index: -2; }
+.share-hero::before { content: ''; position: absolute; inset: var(--reset-margin); background: var(--share-hero-glass); z-index: -1; -webkit-backdrop-filter: var(--glass-filter); backdrop-filter: var(--glass-filter); }
+.share-hero .share-profile { margin: var(--reset-margin); }
+.share-avatar { width: var(--share-avatar-size); height: var(--share-avatar-size); overflow: hidden; }
+.share-avatar img { width: 100%; height: 100%; object-fit: cover; transform: var(--profile-image-scale); }
+.share-address { margin: var(--reset-margin); max-width: 100%; overflow-wrap: anywhere; text-align: center; font-size: var(--share-address-size); font-weight: var(--share-address-weight); }
+.share-copy { display: inline-flex; align-items: center; gap: var(--profile-action-gap); border: var(--button-border); border-radius: var(--signup-radius); padding: var(--share-copy-padding); background: var(--modal-background); color: var(--modal-color); font-size: var(--share-small-font); box-shadow: var(--share-copy-shadow); }
+.share-close { position: absolute; top: var(--share-close-offset); right: var(--share-close-offset); color: var(--modal-color); }
+#signup-dialog .modal-close { position: absolute; top: var(--share-close-offset); right: var(--share-close-offset); }
+.share-feedback { margin: var(--reset-margin); font-size: var(--share-small-font); text-align: center; }
+.share-feedback:empty { display: none; }
+.share-bottom { padding: var(--share-bottom-padding); text-align: center; background: var(--modal-background); }
+.share-bottom .qr-section { margin: var(--reset-margin); gap: var(--share-qr-gap); }
+.share-bottom #share-qr { width: var(--share-qr-size); height: var(--share-qr-size); border: var(--share-qr-border); border-radius: var(--share-qr-radius); overflow: hidden; }
+.share-bottom .qr-downloads button, .share-native { border: var(--share-qr-border); border-radius: var(--signup-radius); padding: var(--share-download-padding); background: var(--modal-background); color: var(--modal-color); font-size: var(--share-small-font); }
+.share-native { margin-top: var(--share-native-margin); }
+.signup-benefits { display: flex; flex-direction: column; gap: var(--benefits-gap); margin: var(--benefits-margin); padding: var(--reset-margin); list-style: none; text-align: left; }
+.signup-benefits li { display: flex; align-items: center; gap: var(--benefit-content-gap); font-size: var(--benefit-font-size); font-weight: var(--benefit-font-weight); }
+.signup-benefits img { width: var(--benefit-icon-size); height: var(--benefit-icon-size); flex-shrink: 0; object-fit: contain; }
+#signup-description { margin-top: var(--signup-subtitle-top-gap); }
+#signup-benefits { border-top: var(--signup-benefits-border); padding-top: var(--signup-benefits-top-padding); }
+
+/* 모바일 버튼 크기 조정 위치 */
+@media (max-width: 580px) {
+  :root {
+    /* 모바일 최상단 공유·가입 안내 버튼 가로·세로 크기 */
+    --topbar-button-size: 38px;
+    /* 모바일 최상단 공유 아이콘 크기 */
+    --topbar-icon-size: 18px;
+    /* 모바일 최상단 가입 안내 악수 아이콘 크기 */
+    --topbar-heart-size: 24px;
+  }
+}
+
+/* 데스크톱·태블릿 카드 레이아웃 조정 위치: 모바일 화면은 그대로 유지 */
+@media (min-width: 581px) {
+  :root {
+    /* 데스크톱·태블릿의 상단 버튼과 프로필 사이 간격 */
+    --profile-top-gap: var(--desktop-profile-top-gap);
+  }
+  body { background: var(--desktop-background); }
+  .page {
+    width: calc(100% - var(--desktop-card-edge-space));
+    margin-block: var(--desktop-card-margin);
+    min-height: calc(var(--page-min-height) - var(--desktop-card-margin) - var(--desktop-card-margin));
+    background: var(--page-background);
+    border-radius: var(--desktop-card-radius);
+    box-shadow: var(--desktop-card-shadow);
+  }
+}

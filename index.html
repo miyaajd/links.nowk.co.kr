@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="nowk의 공식 링크 페이지" />
+    <title>nowk — links</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script defer src="/public/vendor/qrcode.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <svg class="shape-definitions" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="profile-squircle" clipPathUnits="objectBoundingBox">
+          <path d="M .5 0 C .9 0 1 .1 1 .5 C 1 .9 .9 1 .5 1 C .1 1 0 .9 0 .5 C 0 .1 .1 0 .5 0 Z" />
+        </clipPath>
+      </defs>
+    </svg>
+    <div class="page">
+      <header class="topbar">
+        <button
+          class="icon-button topbar-button"
+          id="share-open"
+          type="button"
+          aria-label="이 페이지 공유하기"
+          data-icon="share"
+        ></button>
+        <button
+          class="icon-button topbar-button"
+          id="signup-open"
+          type="button"
+          aria-label="자사몰 가입 안내"
+          data-icon="heart-handshake"
+        ></button>
+      </header>
+      <main>
+        <section class="profile" aria-labelledby="profile-name">
+          <div class="profile-image" id="profile-image">
+            <span aria-hidden="true">nowk</span>
+          </div>
+          <h1 id="profile-name">nowk</h1>
+          <p id="profile-bio" hidden></p>
+          <div class="profile-actions">
+            <a class="collaboration-button" id="collaboration"></a>
+            <a
+              class="icon-button social-button"
+              id="instagram"
+              aria-label="nowk 인스타그램"
+              data-icon="instagram"
+            ></a>
+            <a
+              class="icon-button social-button"
+              id="store"
+              aria-label="nowk 공식 스토어"
+              data-icon="store"
+            ></a>
+          </div>
+        </section>
+        <nav id="links" aria-label="nowk 링크"></nav>
+        <section id="archive" class="archive-section" aria-labelledby="archive-title">
+          <h2 id="archive-title"></h2>
+          <nav id="archive-links" aria-label="nowk 아카이브 링크"></nav>
+        </section>
+      </main>
+      <footer class="page-footer"><small>© nowk All rights reserved</small></footer>
+      <noscript>링크를 표시하려면 JavaScript를 활성화해 주세요.</noscript>
+    </div>
+    <dialog id="share-dialog" class="modal" aria-labelledby="share-title">
+      <h2 id="share-title" class="visually-hidden">이 페이지 공유하기</h2>
+      <div class="share-hero">
+        <img id="share-background" class="share-background" alt="" />
+        <button
+          type="button"
+          class="icon-button share-close"
+          aria-label="공유 창 닫기"
+          data-close
+          data-icon="x"
+        ></button>
+        <div class="share-profile">
+          <div id="share-avatar" class="share-avatar">nowk</div>
+          <span id="share-name" class="visually-hidden">nowk</span>
+        </div>
+        <p id="share-address" class="share-address"></p>
+        <input
+          id="share-url"
+          class="visually-hidden"
+          readonly
+          aria-label="공유할 페이지 주소"
+          tabindex="-1"
+        />
+        <button type="button" id="copy-link" class="share-copy">
+          <span data-icon="copy" aria-hidden="true"></span> 복사
+        </button>
+        <p
+          id="share-status"
+          class="share-feedback"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </div>
+      <div class="share-bottom">
+        <div class="qr-section">
+          <div id="share-qr" aria-label="이 페이지 QR 코드"></div>
+          <div class="qr-downloads">
+            <button type="button" id="qr-png">PNG 저장</button
+            ><button type="button" id="qr-svg">SVG 저장</button>
+          </div>
+        </div>
+        <button type="button" class="share-native" id="native-share">
+          다른 앱으로 공유하기
+        </button>
+      </div>
+    </dialog>
+    <dialog id="signup-dialog" class="modal" aria-labelledby="signup-title">
+      <div class="modal-heading">
+        <span></span
+        ><button
+          type="button"
+          class="icon-button modal-close"
+          aria-label="가입 안내 닫기"
+          data-close
+          data-icon="x"
+        ></button>
+      </div>
+      <div class="modal-emblem" data-icon="heart-handshake"></div>
+      <h2 id="signup-title"></h2>
+      <p id="signup-description" class="modal-description"></p>
+      <ul id="signup-benefits" class="signup-benefits" aria-label="회원 혜택"></ul>
+      <div id="signup"></div>
+      <p class="modal-status" id="signup-status"></p>
+    </dialog>
+  </body>
+</html>

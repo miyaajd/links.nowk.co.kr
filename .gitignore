@@ -1,0 +1,42 @@
+# 로컬 에이전트 설정과 작업 지시서 (README 등 일반 문서는 포함)
+/.codex/
+/.agents/
+/AGENTS*.md
+/NOWK_LINKS_IMPLEMENTATION*.md
+/CODEX*.md
+/codex-notes/
+
+# 빌드 결과: Vercel에서 npm run build로 재생성
+/dist/
+/node_modules/
+/.vercel/
+
+# 로컬 검증 도구와 산출물: scripts/build.mjs는 포함
+/scripts/page.test.mjs
+/scripts/browser-check.mjs
+/scripts/link-check.mjs
+/scripts/release-check.mjs
+/.release-check/
+/test-results/
+/playwright-report/
+/screenshots/
+/tmp/
+/temp/
+/reference-temp.html
+
+# 로그·캐시·로컬 환경변수
+*.log
+/.cache/
+/.npm/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+
+# 참조되지 않는 이전 자산: 로컬에는 보존
+/public/fonts/PretendardVariable.woff2
+/public/fonts/LICENSE
+/public/icons/heart-handshake.svg
+/public/icons/store-icon.svg
+/public/images/.gitkeep
