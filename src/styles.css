@@ -130,7 +130,7 @@
   /* 링크 보조 문구와 제목 사이 간격 */
   --link-caption-gap: 8px;
   /* 이미지 카드 타이틀 글자 굵기 */
-  --link-card-title-weight: 700;
+  --link-card-title-weight: var(--button-font-weight);
   /* 이미지 카드 서브 타이틀 글자 굵기 */
   --link-card-caption-weight: 400;
   /* 움직임 최소화 설정의 링크 전환 */
