@@ -23,8 +23,33 @@ export const linkPage = {
     ],
   },
   contact: {
-    collaborationLabel: '협업 제안',
+    collaborationLabel: 'Business Inquiries',
     email: 'contact@nowk.co.kr',
+    subject: '[nowk 협업 제안] 브랜드명 또는 회사명 — 제안명',
+    body: `안녕하세요, nowk 팀에 협업을 제안드립니다.
+
+■ 제안자 정보
+- 회사명 / 브랜드명*
+- 담당자 이름 / 직함*
+- 담당자 이메일*
+- 연락처
+- 사업자등록번호 (해당 시)
+
+■ 협업 제안
+- 브랜드 / 상품 / 서비스명*
+- 제안 내용*
+  (협업 목적, 원하시는 진행 방식, nowk에 요청하시는 내용을 적어주세요.)
+- 제품 / 서비스 URL
+- 희망 진행 일정
+- 예산 또는 제공 조건*
+  (제작비, 제품 제공, 수익 배분 등 / 미정인 경우 ‘협의 희망’)
+- 회신 희망일*
+  (별도 기한이 없다면 ‘기한 없음’)
+
+■ 참고 자료
+- 제안서 / 포트폴리오 / SNS 링크 또는 첨부파일
+
+감사합니다.`,
     instagram: 'https://www.instagram.com/nowk_official/',
     store: 'https://nowk.co.kr/',
   },

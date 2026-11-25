@@ -117,6 +117,8 @@
   --link-fill-end: translate(-50%, -50%) scale(1.2);
   /* 링크 버튼 확대·원형 채움 전환 */
   --link-motion: 400ms cubic-bezier(.1, 0, .3, 1);
+  /* 모바일 링크 터치 효과를 보여준 뒤 이동하기까지의 시간 */
+  --link-tap-delay: 400ms;
   /* 링크 버튼 썸네일 크기 */
   --link-thumbnail-size: 64px;
   /* 링크 버튼 썸네일 모서리 */
@@ -406,6 +408,8 @@ h1 { margin: var(--reset-margin); font-size: var(--profile-name-size); font-weig
 .link-card .link-caption { font-weight: var(--link-card-caption-weight); }
 .link-button:focus-visible { color: var(--link-hover-color); }
 .link-button:focus-visible::before { transform: var(--link-fill-end); }
+.link-button.is-tapped { color: var(--link-hover-color); transform: var(--link-hover-scale); }
+.link-button.is-tapped::before, .link-card.is-tapped .link-content::before { transform: var(--link-fill-end); }
 @media (hover: hover) and (pointer: fine) {
   .link-button:hover { color: var(--link-hover-color); transform: var(--link-hover-scale); }
   .link-button:hover::before { transform: var(--link-fill-end); }

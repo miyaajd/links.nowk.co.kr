@@ -39,7 +39,7 @@ export function renderPage(config, doc = document) {
   const collaborationText = doc.createElement('span');
   collaborationText.textContent = config.contact.collaborationLabel;
   collaboration.replaceChildren(mailIcon, collaborationText);
-  doc.getElementById('collaboration').href = `mailto:${config.contact.email}?subject=${encodeURIComponent('[nowk] 협업 제안')}`;
+  doc.getElementById('collaboration').href = `mailto:${config.contact.email}?subject=${encodeURIComponent(config.contact.subject)}&body=${encodeURIComponent(config.contact.body.replace(/\r?\n/g, '\r\n'))}`;
   doc.getElementById('store').href = usableHref(config.contact.store);
   doc.getElementById('instagram').href = usableHref(config.contact.instagram);
   doc.getElementById('share-name').textContent = config.profile.name;
@@ -133,6 +133,23 @@ export async function copyPageUrl(url, { navigator: nav, document: doc }) {
 }
 
 export function setupInteractions(doc = document, win = window) {
+  let pendingNavigation;
+  for (const link of doc.querySelectorAll('.link-button')) {
+    link.addEventListener('click', event => {
+      if (!win.matchMedia('(hover: none)').matches || win.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      if (pendingNavigation) return;
+      link.classList.add('is-tapped');
+      const delay = parseFloat(win.getComputedStyle(doc.documentElement).getPropertyValue('--link-tap-delay'));
+      pendingNavigation = win.setTimeout(() => win.location.assign(link.href), delay);
+    });
+  }
+  win.addEventListener('pageshow', () => {
+    win.clearTimeout(pendingNavigation);
+    pendingNavigation = undefined;
+    for (const link of doc.querySelectorAll('.is-tapped')) link.classList.remove('is-tapped');
+  });
   let qr;
   const download = (href, extension) => {
     const link = doc.createElement('a');
